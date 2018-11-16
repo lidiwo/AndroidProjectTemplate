@@ -31,7 +31,7 @@ public abstract class BaseActivity<P extends IPresenter> extends DaggerAppCompat
     private Unbinder unbinder;
 
 
-    @Inject
+//    @Inject
     @Nullable
     P mPresenter;
 
