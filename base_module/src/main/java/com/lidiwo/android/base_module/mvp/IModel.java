@@ -12,4 +12,8 @@ package com.lidiwo.android.base_module.mvp;
  */
 public interface IModel {
 
+    /**
+     * 销毁时候，释放资源
+     */
+    void onDestroy();
 }

@@ -6,8 +6,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.lidiwo.android.base_module.R;
+import com.lidiwo.android.base_module.mvp.IPresenter;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -23,9 +26,14 @@ import pub.devrel.easypermissions.EasyPermissions;
  * @Company：智能程序员
  * @Description： *****************************************************
  */
-public abstract class BaseActivity extends DaggerAppCompatActivity implements EasyPermissions.PermissionCallbacks {
+public abstract class BaseActivity<P extends IPresenter> extends DaggerAppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
     private Unbinder unbinder;
+
+
+    @Inject
+    @Nullable
+    P mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,12 +45,48 @@ public abstract class BaseActivity extends DaggerAppCompatActivity implements Ea
     protected abstract int setContentView();
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if (mPresenter != null) {
+            mPresenter.onStart();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mPresenter != null) {
+            mPresenter.onResume();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mPresenter != null) {
+            mPresenter.onPause();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mPresenter != null) {
+            mPresenter.onStop();
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (unbinder != null) {
             unbinder.unbind();
         }
+        if (mPresenter != null) {
+            mPresenter.onDestroy();
+        }
     }
+
 
     @Override
     public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {

@@ -10,5 +10,5 @@ package com.lidiwo.android.base_module.mvp;
  *
  * *****************************************************
  */
-public interface IView<T> {
+public interface IView {
 }
