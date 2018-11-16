@@ -37,6 +37,7 @@
 
 
                 <EditText
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -59,6 +60,7 @@
                         android:textSize="13sp" />
 
                     <EditText
+                        android:id="@+id/tv_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -113,7 +115,14 @@
 
                 </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
+
+        <Button
+            android:text="aa"
+            android:onClick="pageOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </FrameLayout>
 
 

@@ -1,5 +1,6 @@
 package com.lidiwo.android;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +15,7 @@ import com.lidiwo.android.base_module.base.BaseActivity;
  * @Company：智能程序员
  * @Description： *****************************************************
  */
-public class OneActivity extends BaseActivity {
+public class OneActivity extends Activity {
     public static Context mContext;
 
     @Override

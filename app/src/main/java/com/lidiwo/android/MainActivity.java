@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 import com.lidiwo.android.base_module.base.BaseActivity;
 import com.lidiwo.android.base_module.http.RetrofitClient;
 import com.lidiwo.android.base_module.http.RetrofitConfigure;
@@ -29,6 +31,7 @@ import com.lidiwo.android.log.AndroidLog;
 import java.io.File;
 import java.util.HashMap;
 
+import butterknife.BindView;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
@@ -42,21 +45,19 @@ import retrofit2.Response;
 
 public class MainActivity extends BaseActivity {
 
-
+    @BindView(R.id.tv_phone)
+    TextView tv_phone;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
+    protected int setContentView() {
+        return R.layout.activity_main;
     }
 
-
-
-    private int index=1;
+    private int index = 1;
 
     public void pageOne(View view) throws Exception {
+        AndroidLog.v("@@@:"+tv_phone+"@#");
+
 
 //        HashMap<String, Object> parms = new HashMap<>();
 //        String url = "https://imtt.dd.qq.com/16891/FA37C9FD6CE4795E76144D0D81516DC1.apk?fsname=com.tencent.mobileqq_7.8.5_936.apk";
@@ -211,7 +212,7 @@ public class MainActivity extends BaseActivity {
 
         String url = "https://shopapi.io.mi.com/app/shop/gpipe";
         HashMap<String, Object> parms = new HashMap<>();
-        parms.put("data","{\"HomepageBuildHome\":{\"model\":\"Homepage\",\"action\":\"BuildHome\",\"parameters\":{\"id\":77}}}");
+        parms.put("data", "{\"HomepageBuildHome\":{\"model\":\"Homepage\",\"action\":\"BuildHome\",\"parameters\":{\"id\":77}}}");
 
 //        RxRetrofitClient.create().post(url,parms).subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())

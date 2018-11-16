@@ -2,5 +2,7 @@
     <string name="data_exception">数据异常</string>
     <string name="data_parse_exception">数据解析异常</string>
 
+    <string name="permissions_title">权限要求</string>
+    <string name="permissions_request_content">应用程序没有相应权限可能无法正常工作，打开应用程序设置修改应用程序的权限</string>
 
 </resources>
