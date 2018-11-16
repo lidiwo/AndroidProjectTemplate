@@ -1,0 +1,83 @@
+ext {
+    //是否是登录注册模块
+    isLoginRegisterModule = true
+    //是否是主页模块
+    isHomeModule = true
+
+    android = [
+            compileSdkVersion    : 28,
+            buildToolsVersion    : '28.0.3',
+            minSdkVersion        : 14,
+            targetSdkVersion     : 28,
+            versionCode          : 100,
+            versionName          : '1.0.0',
+
+            androidSupportLibrary: "28.0.0"
+    ]
+
+    greendao = [
+            schemaVersion: 1,
+            daoPackage   : 'com.lidiwo.android.base_module.greendao'
+    ]
+
+    appId = ["applicationId": "com.lidiwo.android"]
+
+    dependencies = [
+            "appcompat-v7"               : "com.android.support:appcompat-v7:${android["androidSupportLibrary"]}",
+            "recyclerview-v7"            : "com.android.support:recyclerview-v7:${android["androidSupportLibrary"]}",
+            "design"                     : "com.android.support:design:${android["androidSupportLibrary"]}",
+
+            //网络相关
+            "retrofit"                   : "com.squareup.retrofit2:retrofit:2.4.0",
+            "adapter-rxjava2"            : "com.squareup.retrofit2:adapter-rxjava2:2.4.0",
+            "okhttp3"                    : "com.squareup.okhttp3:okhttp:3.11.0",
+            "logging-interceptor"        : "com.squareup.okhttp3:logging-interceptor:3.11.0",
+
+            //rxjava相关
+            "rxjava2"                    : "io.reactivex.rxjava2:rxjava:2.2.2",
+            "rxandroid"                  : "io.reactivex.rxjava2:rxandroid:2.1.0",
+
+            //json解析
+            "fastjson"                   : "com.alibaba:fastjson:1.1.70.android",
+
+            //butterknife
+            "butterknife"                : "com.jakewharton:butterknife:9.0.0-rc1",
+            "butterknife-compiler"       : "com.jakewharton:butterknife-compiler:9.0.0-rc1",
+
+            //动态权限
+            "easypermissions"            : "pub.devrel:easypermissions:2.0.0",
+
+            //沉浸式
+            "immersionbar"               : "com.gyf.immersionbar:immersionbar:2.3.2-beta03",
+
+            //Glide 图片加载
+            "glide"                      : "com.github.bumptech.glide:glide:4.8.0",
+            "glide-compiler"             : "com.github.bumptech.glide:compiler:4.8.0",
+
+            //EventBus
+            "eventbus"                   : "org.greenrobot:eventbus:3.1.1",
+
+            //数据库GreenDAO
+            "greendao"                   : "org.greenrobot:greendao:3.2.2",
+
+            //内存泄漏检测 leakcanary
+            "leakcanary-android"         : "com.squareup.leakcanary:leakcanary-android:1.6.1",
+            "leakcanary-android-no-op"   : "com.squareup.leakcanary:leakcanary-android-no-op:1.6.1",
+            "leakcanary-support-fragment": "com.squareup.leakcanary:leakcanary-support-fragment:1.6.1",
+
+            //日志打印
+            "android-log"                : "com.lidiwo:android-log:1.0.0",
+
+            //Dagger 2
+            "dagger"                     : "com.google.dagger:dagger:2.19",
+            "dagger-compiler"            : "com.google.dagger:dagger-compiler:2.19",
+            "dagger-android"             : "com.google.dagger:dagger-android:2.19",
+            "dagger-android-support"     : "com.google.dagger:dagger-android-support:2.19",
+            "dagger-android-processor"   : "com.google.dagger:dagger-android-processor:2.19",
+
+            //路由 Arouter
+            "arouter-api"   : "com.alibaba:arouter-api:1.4.1",
+            "arouter-compiler"   : "com.alibaba:arouter-compiler:1.2.2",
+    ]
+
+}

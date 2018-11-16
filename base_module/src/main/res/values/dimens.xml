@@ -1,0 +1,3 @@
+<resources>
+    <dimen name="toast_y_offset">65dp</dimen>
+</resources>

@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.ext.appId["applicationId"]
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("./android_project.jks")//签名文件路径
+            storePassword "android"
+            keyAlias "android"
+            keyPassword "android"  //签名密码
+            v2SigningEnabled false
+            println("====== signingConfigs.debug ======")
+        }
+        release {
+            storeFile file("./android_project.jks")//签名文件路径
+            storePassword "android"
+            keyAlias "android"
+            keyPassword "android"  //签名密码
+            v2SigningEnabled false
+            println("====== signingConfigs.debug ======")
+        }
+    }
+
+    buildTypes {
+        release {
+            //是否混淆
+            minifyEnabled true
+            //资源压缩
+            zipAlignEnabled true
+            //是否移除无用资源
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':base_module')
+
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+}
