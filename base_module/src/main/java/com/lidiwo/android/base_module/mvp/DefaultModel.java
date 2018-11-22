@@ -15,13 +15,33 @@ import android.arch.lifecycle.OnLifecycleEvent;
  */
 public class DefaultModel implements IModel, LifecycleObserver {
 
-    @Override
-    public void onDestroy() {
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    protected void onCreate() {
+
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    protected void onStart() {
+
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    protected void onResume() {
+
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    protected void onPause() {
+
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    protected void onStop() {
 
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    void onDestroy(LifecycleOwner owner) {
+    protected void onDestroy(LifecycleOwner owner) {
         owner.getLifecycle().removeObserver(this);
     }
 }

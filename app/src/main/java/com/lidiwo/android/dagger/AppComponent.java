@@ -3,8 +3,9 @@ package com.lidiwo.android.dagger;
 import android.app.Application;
 
 import com.lidiwo.android.base.BaseApplication;
-import com.lidiwo.android.base_module.base.DefaultApplication;
+
 import javax.inject.Singleton;
+
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjector;
@@ -20,7 +21,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
  */
 @Singleton
 @Component(modules = {BuilderModule.class, AndroidSupportInjectionModule.class})
- interface AppComponent extends AndroidInjector<BaseApplication> {
+interface AppComponent extends AndroidInjector<BaseApplication> {
 
     @Component.Builder
     interface Builder {

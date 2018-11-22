@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 
 import com.lidiwo.android.base_module.R;
 import com.lidiwo.android.base_module.mvp.IPresenter;
+import com.lidiwo.android.base_module.mvp.IView;
 
 import java.util.List;
 
@@ -30,60 +31,29 @@ public abstract class BaseActivity<P extends IPresenter> extends DaggerAppCompat
 
     private Unbinder unbinder;
 
-
-//    @Inject
+    @Inject
     @Nullable
-    P mPresenter;
+    protected P mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setContentView());
         unbinder = ButterKnife.bind(this);
+        mPresenter.takeView(takeView());
+        mPresenter.initLifecycle();
     }
+
+    protected abstract IView takeView();
+
 
     protected abstract int setContentView();
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (mPresenter != null) {
-            mPresenter.onStart();
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (mPresenter != null) {
-            mPresenter.onResume();
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (mPresenter != null) {
-            mPresenter.onPause();
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (mPresenter != null) {
-            mPresenter.onStop();
-        }
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (unbinder != null) {
             unbinder.unbind();
-        }
-        if (mPresenter != null) {
-            mPresenter.onDestroy();
         }
     }
 

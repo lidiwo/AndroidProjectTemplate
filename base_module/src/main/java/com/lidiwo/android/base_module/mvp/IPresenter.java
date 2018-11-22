@@ -10,30 +10,8 @@ package com.lidiwo.android.base_module.mvp;
  * <p>
  * *****************************************************
  */
-public interface IPresenter {
+public interface IPresenter<V extends IView> {
+    void takeView(V view);
 
-    /**
-     * 初始化操作
-     */
-    void onStart();
-
-    /**
-     * 获取焦点
-     */
-    void onResume();
-
-    /**
-     * 失去焦点
-     */
-    void onPause();
-
-    /**
-     * 停止
-     */
-    void onStop();
-
-    /**
-     * 销毁时候，释放资源
-     */
-    void onDestroy();
+    void initLifecycle();
 }

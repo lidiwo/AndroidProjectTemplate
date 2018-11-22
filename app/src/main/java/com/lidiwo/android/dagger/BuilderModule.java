@@ -1,7 +1,9 @@
 package com.lidiwo.android.dagger;
 
 
-import com.lidiwo.android.MainActivity;
+import com.lidiwo.android.activity.MainActivity;
+import com.lidiwo.android.base_module.dagger.ActivityScope;
+import com.lidiwo.android.dagger.di.MainModule;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -17,9 +19,8 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class BuilderModule {
 
-    @ContributesAndroidInjector
+    @ActivityScope
+    @ContributesAndroidInjector(modules = {MainModule.class})
     abstract MainActivity mainActivityInjector();
 
-//    @ContributesAndroidInjector(modules = {BaseModule.class})
-//    abstract MainActivity baseActivityInjector();
 }

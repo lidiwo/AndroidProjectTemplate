@@ -4,10 +4,10 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.OnLifecycleEvent;
+import android.support.annotation.Nullable;
 
 import com.lidiwo.android.base_module.utils.CheckUtil;
 
-import io.reactivex.functions.Action;
 
 /**
  * *****************************************************
@@ -17,65 +17,71 @@ import io.reactivex.functions.Action;
  * @Company：智能程序员
  * @Description： *****************************************************
  */
-public class DefaultPresenter<V extends IView, M extends IModel> implements IPresenter, LifecycleObserver {
-    private V mProjectView;
+public class DefaultPresenter<V extends IView, M extends IModel> implements IPresenter<V>, LifecycleObserver {
 
-    private M mProjectModel;
-
+    @Nullable
+    protected V mProjectView;
+    @Nullable
+    protected M mProjectModel;
 
     public DefaultPresenter() {
 
     }
 
-    public DefaultPresenter(V view) {
-        CheckUtil.checkObject(view, IView.class);
-        this.mProjectView = view;
-    }
-
-    public DefaultPresenter(V view, M model) {
-        CheckUtil.checkObject(view, IView.class);
+    public DefaultPresenter(@Nullable M model) {
         CheckUtil.checkObject(model, IModel.class);
-        this.mProjectView = view;
         this.mProjectModel = model;
     }
 
+    @Override
+    public void takeView(V view) {
+        this.mProjectView = view;
+    }
 
     @Override
-    public void onStart() {
-        if (mProjectView != null && mProjectView instanceof LifecycleOwner) {
+    public void initLifecycle() {
+        if (mProjectView instanceof LifecycleOwner) {
             ((LifecycleOwner) mProjectView).getLifecycle().addObserver(this);
-            if (mProjectModel != null && mProjectModel instanceof LifecycleObserver) {
+            if (mProjectModel instanceof LifecycleObserver) {
                 ((LifecycleOwner) mProjectView).getLifecycle().addObserver((LifecycleObserver) mProjectModel);
             }
         }
     }
 
-    @Override
-    public void onResume() {
+
+
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    protected void onCreate() {
 
     }
 
-    @Override
-    public void onPause() {
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    protected void onStart() {
 
     }
 
-    @Override
-    public void onStop() {
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    protected void onResume() {
 
     }
 
-    @Override
-    public void onDestroy() {
-        if (mProjectModel != null) {
-            mProjectModel.onDestroy();
-        }
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    protected void onPause() {
+
     }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    protected void onStop() {
+
+    }
+
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    void onDestroy(LifecycleOwner owner) {
+    protected void onDestroy(LifecycleOwner owner) {
         owner.getLifecycle().removeObserver(this);
+        if (mProjectView != null) {
+            mProjectView = null;
+        }
     }
-
-
 }

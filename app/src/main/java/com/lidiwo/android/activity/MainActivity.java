@@ -1,49 +1,25 @@
-package com.lidiwo.android;
+package com.lidiwo.android.activity;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.Gravity;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-
+import com.lidiwo.android.R;
 import com.lidiwo.android.base_module.base.BaseActivity;
-import com.lidiwo.android.base_module.http.RetrofitClient;
-import com.lidiwo.android.base_module.http.RetrofitConfigure;
-import com.lidiwo.android.base_module.http.RetrofitManager;
-import com.lidiwo.android.base_module.http.callback.RequestDownloadProgress;
-import com.lidiwo.android.base_module.http.callback.RequestError;
-import com.lidiwo.android.base_module.http.callback.RequestFailure;
-import com.lidiwo.android.base_module.http.callback.RequestObserver;
-import com.lidiwo.android.base_module.http.callback.RequestResult;
-import com.lidiwo.android.base_module.http.callback.RequestSuccess;
-import com.lidiwo.android.base_module.http.rxjava.RxRetrofitClient;
-import com.lidiwo.android.base_module.utils.ToastUtil;
+import com.lidiwo.android.base_module.mvp.IView;
 import com.lidiwo.android.log.AndroidLog;
+import com.lidiwo.android.mvp.contract.MainContract;
+import com.lidiwo.android.mvp.presenter.MainPresenter;
 
-import java.io.File;
 import java.util.HashMap;
 
 import butterknife.BindView;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.MainView {
 
     @BindView(R.id.tv_phone)
     TextView tv_phone;
@@ -53,11 +29,42 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        AndroidLog.e("MainActivity..............onCreate");
+    }
+
+    @Override
+    protected IView takeView() {
+        return this;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AndroidLog.e("MainActivity..............onResume");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AndroidLog.e("MainActivity..............onDestroy");
+    }
+
+
+    @Override
+    public void demo() {
+        AndroidLog.e("MainActivity..............demo");
+
+    }
+
     private int index = 1;
 
     public void pageOne(View view) throws Exception {
         AndroidLog.v("@@@:"+tv_phone+"@#");
 
+        mPresenter.aa();
 
 //        HashMap<String, Object> parms = new HashMap<>();
 //        String url = "https://imtt.dd.qq.com/16891/FA37C9FD6CE4795E76144D0D81516DC1.apk?fsname=com.tencent.mobileqq_7.8.5_936.apk";
