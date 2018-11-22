@@ -7,17 +7,16 @@ import android.view.View;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
 import com.lidiwo.android.R;
 import com.lidiwo.android.base_module.base.BaseActivity;
+import com.lidiwo.android.base_module.glide.ImageLoader;
 import com.lidiwo.android.base_module.mvp.IView;
 import com.lidiwo.android.log.AndroidLog;
 import com.lidiwo.android.mvp.contract.MainContract;
 import com.lidiwo.android.mvp.presenter.MainPresenter;
-
 import java.util.HashMap;
-
 import butterknife.BindView;
-
 
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.MainView {
 
