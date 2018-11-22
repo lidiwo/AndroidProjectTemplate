@@ -26,6 +26,7 @@ public class DataBean {
     }
     @Generated(hash = 908697775)
     public DataBean() {
+
     }
     public Long getId() {
         return this.id;

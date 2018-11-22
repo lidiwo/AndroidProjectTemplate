@@ -48,9 +48,6 @@ public class DefaultPresenter<V extends IView, M extends IModel> implements IPre
         }
     }
 
-
-
-
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     protected void onCreate() {
 
@@ -75,7 +72,6 @@ public class DefaultPresenter<V extends IView, M extends IModel> implements IPre
     protected void onStop() {
 
     }
-
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     protected void onDestroy(LifecycleOwner owner) {

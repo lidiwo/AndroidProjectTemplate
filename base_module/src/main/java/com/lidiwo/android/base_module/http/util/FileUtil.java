@@ -19,7 +19,7 @@ import java.util.Locale;
  */
 public class FileUtil {
 
-    public static final SimpleDateFormat DEFAULT_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+    private static final SimpleDateFormat DEFAULT_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
     public static String getDownloadDir(String downloadDir) {
         if (TextUtils.isEmpty(downloadDir)) {

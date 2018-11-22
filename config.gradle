@@ -48,7 +48,7 @@ ext {
             "easypermissions"            : "pub.devrel:easypermissions:2.0.0",
 
             //沉浸式
-            "immersionbar"               : "com.gyf.immersionbar:immersionbar:2.3.2-beta03",
+            "immersionbar"               : "com.gyf.immersionbar:immersionbar:2.3.3-beta04",
 
             //Glide 图片加载
             "glide"                      : "com.github.bumptech.glide:glide:4.8.0",
