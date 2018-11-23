@@ -5,8 +5,11 @@ import com.bumptech.glide.annotation.GlideExtension;
 import com.bumptech.glide.annotation.GlideOption;
 import com.bumptech.glide.annotation.GlideType;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.load.resource.gif.GifBitmapProvider;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.RequestOptions;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 /**
  * *****************************************************
@@ -41,7 +44,7 @@ public final class MyAppExtension {
     @GlideType(GifDrawable.class)
     public static void gif(RequestBuilder<GifDrawable> requestBuilder) {
         requestBuilder
-                .transition(new DrawableTransitionOptions())
+                .transition(withCrossFade())
                 .apply(DECODE_TYPE_GIF);
     }
 

@@ -119,10 +119,18 @@
         </LinearLayout>
 
         <Button
-            android:text="aa"
-            android:onClick="pageOne"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="pageOne"
+            android:text="aa" />
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:background="@color/colorPrimaryDark" />
+
     </FrameLayout>
 
 

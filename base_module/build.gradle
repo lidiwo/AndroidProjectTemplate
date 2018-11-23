@@ -63,6 +63,15 @@ dependencies {
     api rootProject.ext.dependencies["immersionbar"]
 
     api rootProject.ext.dependencies["glide"]
+    api (rootProject.ext.dependencies["okhttp3-integration"]) {
+        //排除过渡依赖
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    }
+    api (rootProject.ext.dependencies["recyclerview-integration"]){
+        // Excludes the support library because it's already included by Glide.
+        //排除所有过渡依赖
+        transitive = false
+    }
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
     api rootProject.ext.dependencies["eventbus"]
